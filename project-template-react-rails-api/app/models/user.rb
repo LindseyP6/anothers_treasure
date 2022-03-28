@@ -4,5 +4,4 @@ class User < ApplicationRecord
     has_many :items
     has_many :organizations, through: :items
 
-
 end
