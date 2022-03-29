@@ -5,3 +5,15 @@
 .map-container {
     height: 600px;
 }
+
+.itemCards{
+    border: 2px solid black
+}
+
+.cardImages{
+    max-width: 250px;
+    max-height: 300px;
+}
+
+.itemForm {
+}

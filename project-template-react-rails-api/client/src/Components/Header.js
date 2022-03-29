@@ -8,6 +8,7 @@ function Header() {
         <Route >
         <NavLink exact to="/signup">Sign Up | </NavLink>
         <NavLink exact to="/login">Login | </NavLink>
+        <NavLink exact to='/items'> Items </NavLink>
         <NavLink exact to="/">Main</NavLink>
         </Route>
     </div>
