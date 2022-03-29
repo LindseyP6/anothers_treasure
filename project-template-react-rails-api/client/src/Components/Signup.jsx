@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-
-function Signup({setUser, setIsAuthenticated}) {
+// {setUser, setIsAuthenticated}
+function Signup() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [telephone, setTelephone] = useState("")
@@ -15,19 +15,23 @@ function Signup({setUser, setIsAuthenticated}) {
             telephone, 
             password
         }
+    
+        console.log(newUser);
+
         fetch (`/users`, {
             method: "POST", 
-            header: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newUser)
         })
         .then(res => res.json())
         .then(json => {
+            console.log(json)
             if(json.errors) setErrors(Object.entries(json.errors))
         })
-        setName("")
-        setEmail("")
-        setTelephone("")
-        setPassword("")
+        // setName("")
+        // setEmail("")
+        // setTelephone("")
+        // setPassword("")
     }
 
     return (
@@ -37,7 +41,6 @@ function Signup({setUser, setIsAuthenticated}) {
             <label>Name
                 <input
                     type="name"
-                    name="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
@@ -45,28 +48,24 @@ function Signup({setUser, setIsAuthenticated}) {
             <label>Email
                 <input
                     type="email"
-                    name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)} />
             </label>
             <label>Telephone
                 <input
                     type="name"
-                    name="telephone"
                     value={telephone}
                     onChange={(e) => setTelephone(e.target.value)} />
             </label>
             <label>Password
                 <input
                     type="password"
-                    name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </label>
             <button 
                 type="submit"
-                name="submit"
                 value="Join!"
                 className="submit"> 
                 <strong>Enter!</strong>
