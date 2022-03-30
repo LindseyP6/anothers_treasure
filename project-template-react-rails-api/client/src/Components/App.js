@@ -11,15 +11,10 @@ import ItemContainer from './ItemContainer'
 function App() {
   const [itemsArray, setItemsArray] = useState([]);
   const [orgArray, setOrgArray] = useState([]);
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
-
-  useEffect(() => {
-    fetch('/organizations')
-    .then(res => res.json())
-    .then(setOrgArray)
-  },[] )
 
   useEffect(() => {
     fetch('/items')
@@ -30,6 +25,34 @@ function App() {
   function onFormSubmit(newItem){
     setItemsArray([newItem, ...itemsArray])
   }
+
+  useEffect(() => {
+    fetch("/authorized_user")
+    .then((res) => {
+      if(res.ok) {
+        res.json()
+        .then((user) => {
+          setIsAuthenticated(true);
+          setUser(user);
+        })
+        .then(()=> {
+          fetch('/organizations')
+          .then(res => res.json())
+          .then(orgArray => {
+            setOrgArray(orgArray)
+          });
+        })
+      }
+    });
+  },[]);
+
+  // useEffect(() => {
+  //   fetch('/organizations')
+  //   .then(res => res.json())
+  //   .then(setOrgArray)
+  // },[] )
+
+  if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
 
   return (
     <div >

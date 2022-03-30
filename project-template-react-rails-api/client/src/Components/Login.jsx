@@ -1,23 +1,84 @@
-import React from 'react'
+import React, {useState } from "react";
+import Signup from './Signup'
+// import { useHistory } from "react-router-dom";
 
-function Login() {
-  return (
-    <div>HERE HELO!</div>
-  )
+function Login({setUser,setIsAuthenticated}) {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showForm, setShowForm] = useState(false);
+
+  // const [style, setStyle] = useState("none")
+  // const [isShowing, setIsShowing] = useState(true)
+ 
+  const [error, setError] = useState([])
+  // let history = useHistory();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const user = {
+      name: email,
+      password
+    }
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user }),
+    })        
+    .then(res => {
+      if(res.ok){
+        res.json()
+        .then(user=>{
+          setUser(user)
+          setIsAuthenticated(true)
+        })
+        
+      } else {
+        res.json()
+        .then(json => setError(json.error))
+      }
+    })
+}
+function toggleSignup() {
+  setShowForm((showForm) => !showForm);
 }
 
-export default Login
+  return (
+    <div>
+      <form onSubmit={handleSubmit} className="loginForm">
+      <label> Email
+        <input
+          type="name"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </label>
 
+      <label> Password
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </label>
+      <input type="submit" value="Login!" />
+      </form>
+      {error?<div>{error}</div>:null}
 
-        // .then(res => {
-        //     if(res.ok){
-        //         res.json()
-        //         .then(user => {
-        //             setUser(user)
-        //             setIsAuthenticated(true)
-        //         })
-        //     } else {
-        //         res.json()
-        //         .then(json => setErrors(json.error))
-        //     }
-        // })
+      {/* <div className="card" style={{display: isShowing}}>
+      <div className="modalCard" style={{ display: style }}> */}
+      {/* <button className="closeModal" onClick={toggleSignup}> Signup
+        </button> */}
+      {/* </div> 
+      </div> */}
+    <div>
+      <button onClick={toggleSignup}>Sign Up</button>
+      {showForm ? <Signup/> : null}
+    </div>
+
+    </div>
+  );
+}
+
+export default Login;
