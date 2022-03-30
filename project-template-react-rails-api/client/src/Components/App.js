@@ -11,20 +11,14 @@ import ItemContainer from './ItemContainer'
 function App() {
   const [itemsArray, setItemsArray] = useState([]);
   const [orgArray, setOrgArray] = useState([]);
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-
 
   useEffect(() => {
     fetch('/items')
     .then(res => res.json())
     .then(setItemsArray)
   },[] )
-
-  function onFormSubmit(newItem){
-    setItemsArray([newItem, ...itemsArray])
-  }
 
   useEffect(() => {
     fetch("/authorized_user")
@@ -46,13 +40,18 @@ function App() {
     });
   },[]);
 
-  // useEffect(() => {
-  //   fetch('/organizations')
-  //   .then(res => res.json())
-  //   .then(setOrgArray)
-  // },[] )
+  useEffect(() => {
+    fetch('/organizations')
+    .then(res => res.json())
+    .then(setOrgArray)
+  },[] )
 
-  if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
+
+  function onFormSubmit(newItem){
+    setItemsArray([newItem, ...itemsArray])
+  }
+
+  // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
 
   return (
     <div >
@@ -72,7 +71,7 @@ function App() {
       </Route>
 
       <Route exact path="/">
-        <MapContainer />
+        <MapContainer orgArray={orgArray} />
         <ItemForm items={itemsArray} onFormSubmit={onFormSubmit}/>
       </Route>
 

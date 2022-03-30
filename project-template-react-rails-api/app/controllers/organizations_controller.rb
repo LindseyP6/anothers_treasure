@@ -3,4 +3,6 @@ class OrganizationsController < ApplicationController
         orgs = Organization.all
         render json: orgs
     end
+
+    
 end

@@ -2,7 +2,7 @@ import React, {useState } from "react";
 import Signup from './Signup'
 // import { useHistory } from "react-router-dom";
 
-function Login({setUser,setIsAuthenticated}) {
+function Login({setUser, setIsAuthenticated}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showForm, setShowForm] = useState(false);
@@ -26,20 +26,23 @@ function Login({setUser,setIsAuthenticated}) {
       },
       body: JSON.stringify({ user }),
     })        
-    .then(res => {
-      if(res.ok){
-        res.json()
-        .then(user=>{
-          setUser(user)
-          setIsAuthenticated(true)
-        })
+    .then(res =>  res.json())
+    .then((user) => setUser(user))
+    }
+  
+      
+//       if(res.ok){
+//         res.json()
+//         .then(user=>{ setUser(user)
+//           // setIsAuthenticated(true)
+//         })
         
-      } else {
-        res.json()
-        .then(json => setError(json.error))
-      }
-    })
-}
+//       } else {
+//         res.json()
+//         .then(json => setError(json.error))
+//       }
+//     })
+// }
 function toggleSignup() {
   setShowForm((showForm) => !showForm);
 }
@@ -75,7 +78,7 @@ function toggleSignup() {
         </button> */}
       {/* </div> 
       </div> */}
-        </div>
+         </div> 
     <div className= "signupButton">
       <button onClick={toggleSignup}>Sign Up</button>
       {showForm ? <Signup/> : null}
@@ -84,6 +87,6 @@ function toggleSignup() {
   
     </>
   );
-}
+    }
 
 export default Login;

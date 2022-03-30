@@ -2,7 +2,6 @@ import React from 'react'
 import ItemCard from './ItemCard'
 
 function ItemContainer({items}) {
-    console.log(items)
   return (
     <div>
     {items.map((item) => (    
