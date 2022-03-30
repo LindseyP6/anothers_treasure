@@ -2,6 +2,25 @@
     font-size: 40px;
 }
 
+.loginForm{
+    font-size: 20px;
+    position: absolute;
+    left: 40%;
+    text-align: center;
+ 
+}
+.signupButton{
+    color: pink;
+    position: absolute;
+    top: 30%; 
+    left: 45%;
+    text-align: center;
+}
+
+.loginBox{
+   display: block;
+
+}
 .map-container {
     height: 600px;
 }
@@ -16,4 +35,5 @@
 }
 
 .itemForm {
+color: blue;
 }

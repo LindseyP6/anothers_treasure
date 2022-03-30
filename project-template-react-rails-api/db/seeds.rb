@@ -3,10 +3,10 @@
 # Item.destroy_all 
 
 puts "seeding..."
-User.create(name:"Greg", telephone:"111-111-1111", email:"treasure@gmail.com")
-User.create(name:"Lindsey", telephone:"111-111-1111", email:"treasure@gmail.com")
-User.create(name:"Emily", telephone:"111-111-1111", email:"treasure@gmail.com")
-User.create(name:"Nicole", telephone:"111-111-1111", email:"treasure@gmail.com")
+User.create(name:"Greg", telephone:"111-111-1111", email:"treasure@gmail.com", password: "123")
+User.create(name:"Lindsey", telephone:"111-111-1111", email:"treasure@gmail.com", password: "123")
+User.create(name:"Emily", telephone:"111-111-1111", email:"treasure@gmail.com", password: "123")
+User.create(name:"Nicole", telephone:"111-111-1111", email:"treasure@gmail.com", password: "123")
 
 Organization.create(name:"New Utrecht Reformed Church", telephone:"917-123-2334", address:"1827 84th Street" , longitude: -74.000430 , latitude: 40.608010 )
 Organization.create(name:"New Utrecht Reformed Church2", telephone:"917-123-2334", address:"1827 84th Street" , longitude: -74.000430 , latitude: 40.608010 )

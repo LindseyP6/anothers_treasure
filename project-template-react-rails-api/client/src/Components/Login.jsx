@@ -16,7 +16,7 @@ function Login({setUser,setIsAuthenticated}) {
   function handleSubmit(e) {
     e.preventDefault();
     const user = {
-      name: email,
+      email,
       password
     }
     fetch("/login", {
@@ -45,18 +45,21 @@ function toggleSignup() {
 }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="loginForm">
-      <label> Email
-        <input
-          type="name"
+    <>
+    <div className="loginForm">
+      <form onSubmit={handleSubmit} >
+      <label> Email:
+        <input 
+          className= "loginBox"
+          type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
 
-      <label> Password
+      <label> Password:
         <input
+          className= "loginBox"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -72,12 +75,14 @@ function toggleSignup() {
         </button> */}
       {/* </div> 
       </div> */}
-    <div>
+        </div>
+    <div className= "signupButton">
       <button onClick={toggleSignup}>Sign Up</button>
       {showForm ? <Signup/> : null}
     </div>
 
-    </div>
+  
+    </>
   );
 }
 
