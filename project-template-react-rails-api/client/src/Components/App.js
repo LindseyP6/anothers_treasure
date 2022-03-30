@@ -29,13 +29,13 @@ function App() {
           setIsAuthenticated(true);
           setUser(user);
         })
-        .then(()=> {
-          fetch('/organizations')
-          .then(res => res.json())
-          .then(orgArray => {
-            setOrgArray(orgArray)
-          });
-        })
+        // .then(()=> {
+        //   fetch('/organizations')
+        //   .then(res => res.json())
+        //   .then(orgArray => {
+        //     setOrgArray(orgArray)
+        //   });
+        // })
       }
     });
   },[]);
@@ -45,7 +45,6 @@ function App() {
     .then(res => res.json())
     .then(setOrgArray)
   },[] )
-
 
   function onFormSubmit(newItem){
     setItemsArray([newItem, ...itemsArray])

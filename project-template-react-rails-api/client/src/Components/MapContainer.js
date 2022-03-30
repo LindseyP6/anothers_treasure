@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl';
 // import Map, {Marker} from 'react-map-gl';
+import { Link } from "react-router-dom"
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibGluZHNpc3JhZGQiLCJhIjoiY2wxYjZtbnN4MmRybzNkb2Rnd2R0NDk4dCJ9.Cx2efy3SxJmnV2TY-Eiyzw'
 
@@ -19,28 +20,29 @@ function MapContainer({orgArray}) {
       center: [lng, lat],
       zoom: zoom
     });
-
   });
-  const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-    "<div> </div>"
-    );
+  // console.log("map", orgArray)
+const orgs = orgArray.map(org => <h1>{org.latitude}</h1>)
+const links = <Link exact path="/items">Items</Link>
+  const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(links);
 
-  if (map.current) {
-    
-    new mapboxgl.Marker({
+    const marker = new mapboxgl.Marker({
       color: "#FFFFFF",
       draggable: false
     })
-      .setLngLat([-74.00430, 40.608010])
+
+  if (map.current) {
+    orgArray.map((org) => {
+      return marker
+      .setLngLat([org.longitude, org.latitude])
       .addTo(map.current)
       .setPopup(popup)
-    // console.log("in marker", map.current);
-    // console.log(marker);
-  }
-
+  })
+}
   return (
     <div>
       <div ref={mapContainer} className="map-container" />
+      {orgs}
     </div>
   )
 }
