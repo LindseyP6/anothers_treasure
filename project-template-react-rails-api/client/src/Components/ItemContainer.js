@@ -12,7 +12,7 @@ function ItemContainer({items}) {
         description={item.description}
         image={item.image}
         category={item.category}
-        location={item.org_name} 
+        organization={item.org_name} 
         // donated={item.user_name}
         />
     )) }

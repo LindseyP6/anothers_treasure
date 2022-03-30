@@ -3,17 +3,17 @@ import React, { useState } from 'react'
 function ItemForm({items, onFormSubmit}) {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
-    const [img, setImg] = useState("")
+    const [image, setImage] = useState("")
     const [category, setCategory] = useState("")
-    const [location, setLocation] = useState("")
+    const [organization, setOrganization] = useState("")
 
     function handleSubmit(e) {
         const newItem = {
             name,
             description,
-            img,
+            image,
             category,
-            location
+            organization_id: organization.id
         }
         e.preventDefault();
         fetch("/items", {
@@ -45,13 +45,14 @@ function ItemForm({items, onFormSubmit}) {
             value={description}
             onChange={(e) => setDescription(e.target.value)} />
     </label>
-    <label>Item Category
+    <label>Item Image
         <input
             type="name"
             name="name"
-            value={img}
-            onChange={(e) => setImg(e.target.value)} />
+            value={image}
+            onChange={(e) => setImage(e.target.value)} />
     </label>
+    <br></br>
 
     <label for="select1">Select Category</label>
           <br></br>
@@ -60,27 +61,29 @@ function ItemForm({items, onFormSubmit}) {
             value={category}
             name="category"
             id="select1"
-            placeholder="Field Textarea"
           >
             <option value="Select">Select</option>
             <option value="Furniture">Furniture</option>
             <option value="Clothes">Clothes</option>
             <option value="Kitchen">Kitchen</option>
           </select>
-
-    <label for="select1">Select Location</label>
+<br></br>
+    <label for="select1">Select organization</label>
           <br></br>
         <select
-            onChange={(e) => setLocation(e.target.value)}
-            value={location}
-            name="location"
+            onChange={(e) => setOrganization(e.target.value)}
+            value={organization}
+            name="organization"
             id="select1"
             placeholder="Field Textarea"
             >
-            <option value="Select">Org1</option>
-            <option value="Furniture">Org2</option>
-            <option value="Clothes">Org3</option>
-            <option value="Kitchen">Org4</option>
+            <option value="Select">Select</option>
+            {items.map((item) => 
+              <option value="{item.org_name}">{item.org_name}</option>
+            )}
+            {/* <option value="Org">Org2</option>
+            <option value="Org1">Org3</option>
+            <option value="rg">Org4</option> */}
         </select>
 
     <button 
