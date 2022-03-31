@@ -1,6 +1,6 @@
 import React, {useState } from "react";
 import Signup from './Signup'
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Login({setUser, setIsAuthenticated}) {
   const [email, setEmail] = useState('')
@@ -11,7 +11,7 @@ function Login({setUser, setIsAuthenticated}) {
   // const [isShowing, setIsShowing] = useState(true)
  
   const [error, setError] = useState([])
-  // let history = useHistory();
+  let history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -28,6 +28,7 @@ function Login({setUser, setIsAuthenticated}) {
     })        
     .then(res =>  res.json())
     .then((user) => setUser(user))
+    // history.push("/");
     }
   
       
