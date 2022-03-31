@@ -8,6 +8,7 @@ function Header() {
         <h1 className='headerText'>One Person's Trash is Another's Treasure</h1>
        <div className="header">
         <Route >
+        
         <NavLink  exact to="/signup">Sign Up | </NavLink>
         <NavLink  exact to="/login">Login | </NavLink>
         <NavLink  exact to='/items'> Items </NavLink>

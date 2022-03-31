@@ -18,8 +18,8 @@ function OrganizationContainer({orgArray}) {
        { orgArray.map(org => <div>
        <h1>{org.name}</h1>
        <p> {org.address} {org.telephone}</p>
-       <Link to key={org.id} to={`/organizations/${org.id}`}>  
-      <p>org Page</p>
+       <Link to key={org.id} to = {`/organizations/${org.id}`}>  
+      <p> Organization Page</p>
     </Link>
 </div>)
 }

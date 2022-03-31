@@ -37,6 +37,8 @@ function toggleSignup() {
     <>
     <div className="loginForm">
       <form onSubmit={handleSubmit} >
+        <h3>Welcome Back! </h3>
+       <p> Login:</p>
       <label> Email:
         <input 
           className= "loginBox"

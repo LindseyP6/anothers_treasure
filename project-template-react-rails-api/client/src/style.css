@@ -1,12 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    font-family: 'Poppins';
+
+}
 .header {
     /* font-size: 20px; */
-    justify-content: right;
+    justify-content: center;
     position: relative;
-    display: inline;
+    /* display: inline; */
     margin: auto;
     width: 50%;
-    border: 3px solid green;
     padding: 10px;
+    text-align: center;
+
     
 }
 .headerText{
@@ -15,7 +22,6 @@
     color: #00AFB9;
     margin: auto;
     width: 50%;
-    border: 3px solid green;
     padding: 10px;
 }
 
@@ -27,12 +33,24 @@
 
 
 }
+.itemForm{
+    text-align: center;
+    justify-content: center;
+    /* max-width: 500px;
+    max-height: 500px ; */
+}
 
-.loginForm{
+.loginForm, 
+.signUp{
     font-size: 20px;
     position: absolute;
     left: 40%;
     text-align: center;
+    border-radius: 10px;
+    border: 1px solid #044700;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: 10px;
  
 }
 .signupButton{
@@ -50,7 +68,8 @@
 .map-container {
     height: 550px;
     width: 50%;
-
+    display: flex;
+    justify-content: center;
 }
 
 .itemCards{
@@ -65,7 +84,18 @@
 .itemForm {
 color: blue;
 }
+
+/* #MapAndMenu{
+    display: relative;
+} */
+.orgPage{
+    justify-content: center;
+    text-align: center;
+}
+
 .orgContainer{
     color: black;
     width: 50%;
+    position: absolute;
+    
 }

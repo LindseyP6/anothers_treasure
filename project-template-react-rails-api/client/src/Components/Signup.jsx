@@ -41,34 +41,51 @@ function Signup() {
 
     return (
         <>
-            <div>Signup!</div>
-            <form onSubmit={handleSubmit} className="signupForm">
+            <div className='signUp'>
+                <h3 >Signup and Start Donating!</h3>
+            <form onSubmit={handleSubmit} >
             <label>Name
+            <br></br>
+
                 <input
                     type="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
             </label>
+            <br></br>
+
             <label>Email
+            <br></br>
+
                 <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)} />
             </label>
+            <br></br>
+
             <label>Telephone
+            <br></br>
+
                 <input
                     type="name"
                     value={telephone}
                     onChange={(e) => setTelephone(e.target.value)} />
             </label>
+            <br></br>
+
             <label>Password
+            <br></br>
+
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </label>
+            <br></br>
+
             <button 
                 type="submit"
                 value="Join!"
@@ -76,6 +93,7 @@ function Signup() {
                 <strong>Enter!</strong>
             </button>
             </form>
+            </div>
             {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
 
         </>

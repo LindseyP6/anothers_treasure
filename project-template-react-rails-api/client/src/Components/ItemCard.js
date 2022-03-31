@@ -1,7 +1,18 @@
 import React, {useState} from 'react'
 
-function ItemCard({itemArray, name, description, image, category, organization }) {
+function ItemCard({onHandleDelete, item, id, name, description, image, category, organization }) {
 
+  function handleDeleteClick() {
+    fetch(`/items/${id}`, {
+      method: "DELETE",
+    })
+      .then((r) => r.json())
+      .then(() => {
+        onHandleDelete(item);
+      });
+  }
+
+ 
   return (
     <div className="itemCards">
 
@@ -10,8 +21,9 @@ function ItemCard({itemArray, name, description, image, category, organization }
       <img src={image} alt={name} className="cardImages" />
       <p>{category}</p>
       <p>{organization}</p>
-      <button>delete</button>
-      <button>update</button>
+      <button className="del-btn" onClick={handleDeleteClick}>
+        Donate to GoodWill
+      </button>    <button>update</button>
     </div>
   )
 }

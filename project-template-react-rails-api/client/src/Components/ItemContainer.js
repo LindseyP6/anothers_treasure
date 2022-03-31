@@ -1,18 +1,29 @@
 import React, {useState} from 'react'
 import ItemCard from './ItemCard'
+import Filter from './Filter'
 
-function ItemContainer({items}) {
-  const [options, setOptions] = useState([])
-  const [orgs, setOrg] = useState("")
+function ItemContainer({onHandleDelete, itemsArray, orgArray} ) {
+ 
+  const [selected, setSelected] = useState("All");
 
 
-  const filterByOrgs = items.filter((item) =>
-    item.org_name.includes(orgs)
-);
-
-  function handleOrgChange(e){
-    setOrg(e.target.value)
-  }
+  const filtered = itemsArray.filter((item) => {
+    if (selected === "All") {
+      return true;
+    } else if (item.org_name === selected) {
+       return filtered.map((item) => (    
+       <ItemCard
+           key={item.id}
+           name={item.name}
+           description={item.description}
+           image={item.image}
+           category={item.category}
+           organization={item.org_name}  
+           onHandleDelete={onHandleDelete} 
+           />
+       )) 
+    }
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,25 +31,10 @@ function ItemContainer({items}) {
 
   return (
     <div>
-      <div classeName="orgDropdown">
-      <form onSubmit={handleSubmit}>
-        <label for="select1">Select Category</label>
-        <select
-          onChange={handleOrgChange}
-          value={options}
-          name="options"
-          id="select1"
-        >
-          <option value="Select">Select</option>
-          {filterByOrgs.map((item) => 
-                <option value="{item.org_name}">{item.org_name}</option>
-              )}
-        </select>
+    
+      <Filter orgArray={orgArray} selected={selected} setSelected={setSelected} />
 
-      </form>
-      </div>
-
-    {items.map((item) => (    
+    {filtered.map((item) => (    
     <ItemCard
         key={item.id}
         name={item.name}
@@ -46,7 +42,6 @@ function ItemContainer({items}) {
         image={item.image}
         category={item.category}
         organization={item.org_name} 
-        itemArray = {items}
         />
     )) }
 </div>

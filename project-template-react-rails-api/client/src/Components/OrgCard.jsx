@@ -37,11 +37,13 @@ const {id} = useParams()
     console.log(orgItems)
   return (
     <> 
+    <div className='orgPage'>
     <p>{org.name}</p>
     <p>{org.address}</p>
     <p>{org.telephone}</p>
     {/* <p>{org.items}</p> */}
     <ItemCard1 key={items.id} items={orgItems}/>
+    </div>
     </>
   )
 }

@@ -42,10 +42,28 @@ function App() {
       .then(setOrgArray)
   }, [])
 
+  // function handleDelete(deletedId) {
+  //   const updatedItems = itemsArray.filter(item => item.id !== deletedId);
+  //   setItemsArray(updatedItems);
+  // }
+
+//   function handleDelete(id) {
+//     fetch(`/items/${id}`, {
+//       method: "DELETE",
+//     }).then((r) => r.json())
+//     .then(() => {
+//       handleDelete(item);
+//     });
+// }
+//   }
+function handleDelete(itemToDelete) {
+  const updatedItems = itemsArray.filter((item) => item.id !== itemToDelete.id);
+  setItemsArray(updatedItems);
+}
+
   function onFormSubmit(newItem) {
     setItemsArray([newItem, ...itemsArray])
   }
-
   // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
 
   return (
@@ -54,7 +72,8 @@ function App() {
 
       <Switch>
         <Route path="/items">
-          <ItemContainer items={itemsArray} />
+        
+          <ItemContainer onHandleDelete={handleDelete} itemsArray={itemsArray} orgArray={orgArray} />
         </Route>
 
         <Route path="/signup">
@@ -74,10 +93,12 @@ function App() {
           <OrganizationPage orgArray={orgArray} />
         </Route>
 
+        <div id="MapAndMenu">
         <Route exact path="/">
           <MapContainer orgArray={orgArray} />
           <OrganizationContainer orgArray={orgArray} />
         </Route>
+        </div>
 
       </Switch>
     </div>

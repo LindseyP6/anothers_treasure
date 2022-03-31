@@ -28,9 +28,11 @@ function ItemForm({items, onFormSubmit}) {
       }
 
   return (
-    <div className="itemForm">Signup!
+    <div className="itemForm"> Donate an Item
     <form onSubmit={handleSubmit} className="signupForm">
     <label>Item Name
+    <br></br>
+
         <input
             type="name"
             name="name"
@@ -38,14 +40,22 @@ function ItemForm({items, onFormSubmit}) {
             onChange={(e) => setName(e.target.value)}
         />
     </label>
+    <br></br>
+    
     <label>Item Description
+    <br></br>
+
         <input
             type="name"
             name="name"
             value={description}
             onChange={(e) => setDescription(e.target.value)} />
     </label>
+    <br></br>
+
     <label>Item Image
+    <br></br>
+
         <input
             type="name"
             name="name"
@@ -55,6 +65,7 @@ function ItemForm({items, onFormSubmit}) {
     <br></br>
 
     <label for="select1">Select Category</label>
+
           <br></br>
           <select
             onChange={(e) => setCategory(e.target.value)}
@@ -81,10 +92,9 @@ function ItemForm({items, onFormSubmit}) {
             {items.map((item) => 
               <option value="{item.org_name}">{item.org_name}</option>
             )}
-            {/* <option value="Org">Org2</option>
-            <option value="Org1">Org3</option>
-            <option value="rg">Org4</option> */}
+         
         </select>
+    <br></br>
 
     <button 
         type="submit"
