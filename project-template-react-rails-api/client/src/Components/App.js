@@ -56,15 +56,18 @@ function App() {
     <div >
      <Header />
 
-     <Route path="/items">
+<Switch>
+      <Route path="/items">
         <ItemContainer items={itemsArray}/>
       </Route>
+ 
 
-     <Switch>
       <Route path="/signup">
         <Signup setIsAuthenticated= {setIsAuthenticated} setUser = {setUser} />
       </Route>
+  
 
+  
       <Route exact path="/login">
         <Login setUser = {setUser} />
       </Route>
@@ -72,7 +75,7 @@ function App() {
       <Route exact path="/">
         <MapContainer orgArray={orgArray} />
         <ItemForm items={itemsArray} onFormSubmit={onFormSubmit}/>
-      </Route>
+      </Route> 
 
      </Switch>
      </div>
