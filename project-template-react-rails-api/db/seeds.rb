@@ -8,10 +8,10 @@ User.create(name:"Lindsey", telephone:"111-111-1111", email:"treasure@gmail.com"
 User.create(name:"Emily", telephone:"111-111-1111", email:"treasure@gmail.com", password: "123")
 User.create(name:"Nicole", telephone:"111-111-1111", email:"treasure@gmail.com", password: "123")
 
-Organization.create(name:"New Utrecht Reformed Church", telephone:"917-123-2334", address:"1827 84th Street" , longitude: -74.000430 , latitude: 40.608010 )
-Organization.create(name:"New Utrecht Reformed Church2", telephone:"917-123-2334", address:"1827 84th Street" , longitude: -74.011731 , latitude: 40.613120)
-Organization.create(name:"New Utrecht Reformed Church3", telephone:"917-123-2334", address:"1827 84th Street" , longitude: -73.997818 , latitude: 40.618398 )
-Organization.create(name:"New Utrecht Reformed Church4", telephone:"917-123-2334", address:"1827 84th Street" , longitude: -73.986488, latitude: 40.613434)
+Organization.create(name:"New Utrecht Reformed Church", telephone:"917-123-2334", address:"1827 84th Street, Brooklyn, NY 11218" , longitude: -74.000430 , latitude: 40.608010 )
+Organization.create(name:"The Kensington Family Shelter", telephone:"718-226-0425", address:"385 McDonald Ave, Brooklyn, NY 11218" , longitude: -73.979379 , latitude: 40.644562)
+Organization.create(name:"Marlboro Senior Center", telephone:"718-333-0575", address:"2298 W 8th St, Brooklyn, NY 11223" , longitude: -73.978680 , latitude: 40.591800)
+Organization.create(name:"St. George Community Center", telephone:"929-305-3000", address: "6209 11th Ave, Brooklyn, NY 11219" , longitude: -74.004190, latitude: 40.629850)
 
 Item.create(name: "Dresser", description: "Wooden dresser", image:"https://www.used.forsale/sh-img/137579703_10159798804663475_1364652713289027237_o_solid%2Bwood%2Bdresser.jpg", category: "furniture", user_id: User.all.sample.id, organization_id: Organization.all.sample.id)
 Item.create(name: "Desk", description: "Wooden desk with drawers", image:"https://www.nationaloffice.com/products/UM5028ODSK_4541.jpg" , category: "furniture", user_id: User.all.sample.id, organization_id: Organization.all.sample.id)

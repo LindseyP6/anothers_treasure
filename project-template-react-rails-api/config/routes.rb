@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :organizations
+  resources :organizations 
   resources :items
   resources :users, only: [:index, :create]
 

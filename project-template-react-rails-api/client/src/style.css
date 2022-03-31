@@ -1,5 +1,31 @@
 .header {
-    font-size: 40px;
+    /* font-size: 20px; */
+    justify-content: right;
+    position: relative;
+    display: inline;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    
+}
+.headerText{
+    position: relative; 
+    justify-content: center;
+    color: #00AFB9;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.headerPic{
+    height:50px;
+    width: 50px;
+    justify-content: inline;
+    float: left;
+
+
 }
 
 .loginForm{
@@ -22,7 +48,9 @@
 
 }
 .map-container {
-    height: 600px;
+    height: 550px;
+    width: 50%;
+
 }
 
 .itemCards{
@@ -36,4 +64,8 @@
 
 .itemForm {
 color: blue;
+}
+.orgContainer{
+    color: black;
+    width: 50%;
 }

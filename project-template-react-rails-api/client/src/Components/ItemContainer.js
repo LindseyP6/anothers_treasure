@@ -12,7 +12,6 @@ function ItemContainer({items}) {
         image={item.image}
         category={item.category}
         organization={item.org_name} 
-        // donated={item.user_name}
         />
     )) }
 </div>

@@ -7,9 +7,6 @@ function Login({setUser, setIsAuthenticated}) {
   const [password, setPassword] = useState('')
   const [showForm, setShowForm] = useState(false);
 
-  // const [style, setStyle] = useState("none")
-  // const [isShowing, setIsShowing] = useState(true)
- 
   const [error, setError] = useState([])
   let history = useHistory();
 
@@ -31,19 +28,7 @@ function Login({setUser, setIsAuthenticated}) {
     history.push("/");
     }
   
-      
-//       if(res.ok){
-//         res.json()
-//         .then(user=>{ setUser(user)
-//           // setIsAuthenticated(true)
-//         })
-        
-//       } else {
-//         res.json()
-//         .then(json => setError(json.error))
-//       }
-//     })
-// }
+
 function toggleSignup() {
   setShowForm((showForm) => !showForm);
 }
@@ -72,18 +57,11 @@ function toggleSignup() {
       <input type="submit" value="Login!" />
       </form>
       {error?<div>{error}</div>:null}
-
-      {/* <div className="card" style={{display: isShowing}}>
-      <div className="modalCard" style={{ display: style }}> */}
-      {/* <button className="closeModal" onClick={toggleSignup}> Signup
-        </button> */}
-      {/* </div> 
-      </div> */}
-         </div> 
-    <div className= "signupButton">
+        </div> 
+    {/* <div className= "signupButton">
       <button onClick={toggleSignup}>Sign Up</button>
       {showForm ? <Signup/> : null}
-    </div>
+    </div> */}
 
   
     </>

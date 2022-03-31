@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from "react-router-dom";
 // {setUser, setIsAuthenticated}
 function Signup() {
     const [name, setName] = useState("")
@@ -6,6 +7,8 @@ function Signup() {
     const [telephone, setTelephone] = useState("")
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState([])
+
+    let history = useHistory();
 
     function handleSubmit(e){
         e.preventDefault()
@@ -27,7 +30,9 @@ function Signup() {
         .then(json => {
             console.log(json)
             if(json.errors) setErrors(Object.entries(json.errors))
+            
         })
+        history.push("/");
         // setName("")
         // setEmail("")
         // setTelephone("")
