@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-function ItemCard({ name, description, image, category, organization }) {
+function ItemCard({itemArray, name, description, image, category, organization }) {
+
   return (
     <div className="itemCards">
+
       <h3>{name}</h3>
       <p>{description}</p>
       <img src={image} alt={name} className="cardImages" />
