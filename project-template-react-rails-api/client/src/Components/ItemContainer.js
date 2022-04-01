@@ -32,9 +32,9 @@ function ItemContainer( { handleItemUpdate, handleDelete, itemsArray, orgArray} 
   }
 
   return (
-    <div>
+    <div className='itemContainer'>
     
-      <Filter orgArray={orgArray} selected={selected} setSelected={setSelected} />
+      {/* <Filter orgArray={orgArray} selected={selected} setSelected={setSelected} /> */}
 
     {filtered.map((item) => (    
     <ItemCard

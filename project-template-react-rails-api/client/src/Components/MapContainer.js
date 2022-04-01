@@ -76,7 +76,7 @@ function MapContainer({ orgArray }) {
       .setLngLat([-73.97868, 40.5918])
       .addTo(map.current)
       .setPopup(popup3);
-
+  
     new mapboxgl.Marker({
       color: "#e09f3e",
       draggable: false,
@@ -84,41 +84,42 @@ function MapContainer({ orgArray }) {
       .setLngLat([-74.00419, 40.62985])
       .addTo(map.current)
       .setPopup(popup4);
-  }
-  // new mapboxgl.Marker({
-  //   color: "#e09f3e",
-  //   draggable: false,
-  // })
-  //   .setLngLat([-73.98831, 40.61449])
-  //   .addTo(map.current)
-  //   .setPopup(popup5);
-
-  // new mapboxgl.Marker({
-  //   color: "#e09f3e",
-  //   draggable: false,
-  // })
-  //   .setLngLat([-74.002121, 40.646931])
-  //   .addTo(map.current)
-  //   .setPopup(popup6);
-
-  // new mapboxgl.Marker({
-  //   color: "#e09f3e",
-  //   draggable: false,
-  // })
-  //   .setLngLat([-73.98831, 40.61449])
-  //   .addTo(map.current)
-  //   .setPopup(popup7);
-
-  // new mapboxgl.Marker({
-  //   color: "#e09f3e",
-  //   draggable: false,
-  // })
-  //   .setLngLat([-74.023972, 40.645538])
-  //   .addTo(map.current)
-  //   .setPopup(popup8);
   
+  new mapboxgl.Marker({
+    color: "#F07167",
+    draggable: false,
+  })
+    .setLngLat([-73.98831, 40.61449])
+    .addTo(map.current)
+    .setPopup(popup5);
+
+  new mapboxgl.Marker({
+    color: "#0081A7",
+    draggable: false,
+  })
+    .setLngLat([-74.002121, 40.646931])
+    .addTo(map.current)
+    .setPopup(popup6);
+
+  new mapboxgl.Marker({
+    color: "#e09f3e",
+    draggable: false,
+  })
+    .setLngLat([-73.98831, 40.61449])
+    .addTo(map.current)
+    .setPopup(popup7);
+
+  new mapboxgl.Marker({
+    color: "#00AFB9",
+    draggable: false,
+  })
+    .setLngLat([-74.023972, 40.645538])
+    .addTo(map.current)
+    .setPopup(popup8);
+  }
   return (
     <div>
+      <p style={{"text-align": "center", "color": "#00AFB9"}}>Click on an point to see an organization's details.</p>
       <div ref={mapContainer} className="map-container" />
     </div>
   );

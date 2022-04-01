@@ -31,16 +31,18 @@ const {id} = useParams()
       if ({id} === item.organization_id) {
         return item
       }
-      console.log("now", item)
-    });
+        });
 
-    console.log(orgItems)
   return (
     <> 
+         
+
     <div className='orgPage'>
+    <h3>Organization Details:</h3>
     <p>{org.name}</p>
     <p>{org.address}</p>
     <p>{org.telephone}</p>
+    <p> In need of: {org.needs} </p>
     {/* <p>{org.items}</p> */}
     <ItemCard1 key={items.id} items={orgItems}/>
     </div>

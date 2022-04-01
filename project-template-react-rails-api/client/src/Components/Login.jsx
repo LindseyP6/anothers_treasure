@@ -38,8 +38,9 @@ function toggleSignup() {
     <div className="loginForm">
       <form onSubmit={handleSubmit} >
         <h3>Welcome Back! </h3>
-       <p> Login:</p>
+       <p> Login Here</p>
       <label> Email:
+      <br></br>
         <input 
           className= "loginBox"
           type="email"
@@ -47,8 +48,9 @@ function toggleSignup() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
-
+      <br></br>
       <label> Password:
+      <br></br>
         <input
           className= "loginBox"
           type="password"
@@ -56,7 +58,8 @@ function toggleSignup() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <input type="submit" value="Login!" />
+      <br></br>
+      <input className="submit" type="submit" value="Login!" />
       </form>
       {error?<div>{error}</div>:null}
         </div> 
