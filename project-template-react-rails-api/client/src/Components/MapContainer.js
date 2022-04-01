@@ -60,7 +60,7 @@ function MapContainer({ orgArray }) {
       .setLngLat([-74.0043, 40.60801])
       .addTo(map.current)
       .setPopup(popup1);
-
+ 
     new mapboxgl.Marker({
       color: "#0081A7",
       draggable: false,
@@ -85,38 +85,38 @@ function MapContainer({ orgArray }) {
       .addTo(map.current)
       .setPopup(popup4);
   }
-  new mapboxgl.Marker({
-    color: "#e09f3e",
-    draggable: false,
-  })
-    .setLngLat([-73.98831, 40.61449])
-    .addTo(map.current)
-    .setPopup(popup5);
+  // new mapboxgl.Marker({
+  //   color: "#e09f3e",
+  //   draggable: false,
+  // })
+  //   .setLngLat([-73.98831, 40.61449])
+  //   .addTo(map.current)
+  //   .setPopup(popup5);
 
-  new mapboxgl.Marker({
-    color: "#e09f3e",
-    draggable: false,
-  })
-    .setLngLat([-74.002121, 40.646931])
-    .addTo(map.current)
-    .setPopup(popup6);
+  // new mapboxgl.Marker({
+  //   color: "#e09f3e",
+  //   draggable: false,
+  // })
+  //   .setLngLat([-74.002121, 40.646931])
+  //   .addTo(map.current)
+  //   .setPopup(popup6);
 
-  new mapboxgl.Marker({
-    color: "#e09f3e",
-    draggable: false,
-  })
-    .setLngLat([-73.98831, 40.61449])
-    .addTo(map.current)
-    .setPopup(popup7);
+  // new mapboxgl.Marker({
+  //   color: "#e09f3e",
+  //   draggable: false,
+  // })
+  //   .setLngLat([-73.98831, 40.61449])
+  //   .addTo(map.current)
+  //   .setPopup(popup7);
 
-  new mapboxgl.Marker({
-    color: "#e09f3e",
-    draggable: false,
-  })
-    .setLngLat([-74.023972, 40.645538])
-    .addTo(map.current)
-    .setPopup(popup8);
-
+  // new mapboxgl.Marker({
+  //   color: "#e09f3e",
+  //   draggable: false,
+  // })
+  //   .setLngLat([-74.023972, 40.645538])
+  //   .addTo(map.current)
+  //   .setPopup(popup8);
+  
   return (
     <div>
       <div ref={mapContainer} className="map-container" />

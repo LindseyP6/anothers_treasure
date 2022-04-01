@@ -10,6 +10,7 @@ import ItemForm from './ItemForm'
 import ItemContainer from './ItemContainer'
 import OrganizationPage from "./OrganizationPage";
 import OrgCard from "./OrgCard";
+import ItemEditForm from "./ItemEditForm";
 
 function App() {
   const [itemsArray, setItemsArray] = useState([]);
@@ -42,24 +43,30 @@ function App() {
       .then(setOrgArray)
   }, [])
 
-  // function handleDelete(deletedId) {
-  //   const updatedItems = itemsArray.filter(item => item.id !== deletedId);
-  //   setItemsArray(updatedItems);
-  // }
 
-//   function handleDelete(id) {
-//     fetch(`/items/${id}`, {
-//       method: "DELETE",
-//     }).then((r) => r.json())
-//     .then(() => {
-//       handleDelete(item);
-//     });
-// }
-//   }
-function handleDelete(itemToDelete) {
-  const updatedItems = itemsArray.filter((item) => item.id !== itemToDelete.id);
-  setItemsArray(updatedItems);
-}
+  function handleItemUpdate(changedItem) {
+    const changedItems = itemsArray.map(originalItem => {
+      if (originalItem.id === changedItem.id) {
+        return changedItem;
+      } else {
+        return originalItem;
+      }
+    })
+    setItemsArray(changedItems);
+  }
+
+  function handleDelete(id) {
+    fetch(`/items/${id}`, {
+      method: "DELETE",
+    }).then((r) => {
+      if (r.ok) {
+        setItemsArray((items) =>
+          items.filter((item) => item.id !== id)
+        );
+      }
+    });
+  }
+
 
   function onFormSubmit(newItem) {
     setItemsArray([newItem, ...itemsArray])
@@ -72,8 +79,13 @@ function handleDelete(itemToDelete) {
 
       <Switch>
         <Route path="/items">
-        
-          <ItemContainer onHandleDelete={handleDelete} itemsArray={itemsArray} orgArray={orgArray} />
+  
+          {/* <ItemContainer handleDelete={handleDelete}  itemsArray={itemsArray} orgArray={orgArray} /> */}
+          <ItemContainer handleDelete={handleDelete} handleItemUpdate={handleItemUpdate} itemsArray={itemsArray} orgArray={orgArray} />
+        </Route>
+
+        <Route path="/items/:id/edit">
+          <ItemEditForm handleItemUpdate={handleItemUpdate}/>
         </Route>
 
         <Route path="/signup">

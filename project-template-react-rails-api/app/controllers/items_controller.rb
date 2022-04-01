@@ -13,6 +13,13 @@ class ItemsController < ApplicationController
         render json: item, status: :created
     end
 
+    def update 
+        item = Item.find(parmas[:id])
+        item.update!(item_params)
+
+        render json: item, status: :accepted
+    end
+
     def destroy 
         item = Item.find(params[:id])
         item.destroy 

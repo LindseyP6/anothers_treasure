@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import ItemCard from './ItemCard'
 import Filter from './Filter'
 
-function ItemContainer({onHandleDelete, itemsArray, orgArray} ) {
+function ItemContainer( { handleItemUpdate, handleDelete, itemsArray, orgArray} ) {
  
   const [selected, setSelected] = useState("All");
 
@@ -14,12 +14,14 @@ function ItemContainer({onHandleDelete, itemsArray, orgArray} ) {
        return filtered.map((item) => (    
        <ItemCard
            key={item.id}
+           itemId={item.id}
            name={item.name}
            description={item.description}
            image={item.image}
            category={item.category}
-           organization={item.org_name}  
-           onHandleDelete={onHandleDelete} 
+           organization={item.org_name} 
+           handleItemUpdate={handleItemUpdate}
+           handleDelete = {handleDelete} 
            />
        )) 
     }
@@ -37,11 +39,15 @@ function ItemContainer({onHandleDelete, itemsArray, orgArray} ) {
     {filtered.map((item) => (    
     <ItemCard
         key={item.id}
+        id={item.id}
         name={item.name}
         description={item.description}
         image={item.image}
         category={item.category}
-        organization={item.org_name} 
+        organization={item.org_name}
+        handleItemUpdate={handleItemUpdate}
+        handleDelete = {handleDelete} 
+        itemsArray={itemsArray}
         />
     )) }
 </div>

@@ -1,17 +1,13 @@
 import React, {useState} from 'react'
+import ItemEditForm from './ItemEditForm'
 
-function ItemCard({onHandleDelete, item, id, name, description, image, category, organization }) {
+function ItemCard({handleDelete, itemsArray, handleItemUpdate, item, id, name, description, image, category, organization }) {
 
-  function handleDeleteClick() {
-    fetch(`/items/${id}`, {
-      method: "DELETE",
-    })
-      .then((r) => r.json())
-      .then(() => {
-        onHandleDelete(item);
-      });
+  const [formIsShowing, setFormIsShowing] = useState(false)
+
+  function toggleSignup() {
+    setFormIsShowing((formIsShowing) => !formIsShowing);
   }
-
  
   return (
     <div className="itemCards">
@@ -21,9 +17,20 @@ function ItemCard({onHandleDelete, item, id, name, description, image, category,
       <img src={image} alt={name} className="cardImages" />
       <p>{category}</p>
       <p>{organization}</p>
-      <button className="del-btn" onClick={handleDeleteClick}>
-        Donate to GoodWill
-      </button>    <button>update</button>
+      <button onClick={() => handleDelete(id)}>Delete</button> 
+      {/* <div className= "signupButton"> */}
+      <button onClick={toggleSignup}>Update</button> 
+      {formIsShowing ? <ItemEditForm
+           itemsArray={itemsArray} 
+           id={id}
+           name={name}
+           description={description}
+           image={image}
+           category={category}
+           organization={organization} 
+           handleItemUpdate={handleItemUpdate}
+           /> : null}
+    {/* </div> */}
     </div>
   )
 }

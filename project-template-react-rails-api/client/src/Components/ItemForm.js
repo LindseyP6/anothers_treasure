@@ -77,6 +77,8 @@ function ItemForm({items, onFormSubmit}) {
             <option value="Furniture">Furniture</option>
             <option value="Clothes">Clothes</option>
             <option value="Kitchen">Kitchen</option>
+            <option value="Books">Books</option>
+            <option value="Toys">Toys</option>
           </select>
 <br></br>
     <label for="select1">Select organization</label>
