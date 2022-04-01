@@ -26,7 +26,7 @@ function Login({setUser, setIsAuthenticated}) {
     .then(res =>  res.json())
     .then((user) => {
     setUser(user);
-    setIsAuthenticated(true);
+    // setIsAuthenticated(true);
     })
    
     history.push("/");

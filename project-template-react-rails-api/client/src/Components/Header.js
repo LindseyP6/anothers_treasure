@@ -26,7 +26,7 @@ function Header({isAuthenticated, setIsAuthenticated}) {
         <NavLink className="links" exact to='/items'> Items </NavLink>
         <NavLink className="links" exact to="/">Main</NavLink>
         </Route>
-        <button onClick={handleLogout}>Logout</button>
+        {/* <button onClick={handleLogout}>Logout</button> */}
 
         </div>
         

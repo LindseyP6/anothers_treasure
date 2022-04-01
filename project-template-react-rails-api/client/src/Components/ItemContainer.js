@@ -20,6 +20,7 @@ function ItemContainer( { handleItemUpdate, handleDelete, itemsArray, orgArray} 
            image={item.image}
            category={item.category}
            organization={item.org_name} 
+           user= {item.user_name}
            handleItemUpdate={handleItemUpdate}
            handleDelete = {handleDelete} 
            />
@@ -45,6 +46,7 @@ function ItemContainer( { handleItemUpdate, handleDelete, itemsArray, orgArray} 
         image={item.image}
         category={item.category}
         organization={item.org_name}
+        user={item.user_name}
         handleItemUpdate={handleItemUpdate}
         handleDelete = {handleDelete} 
         itemsArray={itemsArray}

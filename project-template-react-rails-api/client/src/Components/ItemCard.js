@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import ItemEditForm from './ItemEditForm'
 
-function ItemCard({handleDelete, itemsArray, handleItemUpdate, item, id, name, description, image, category, organization }) {
+function ItemCard({handleDelete, itemsArray, handleItemUpdate, item, id, name, user, description, image, category, organization }) {
 
   const [formIsShowing, setFormIsShowing] = useState(false)
 
@@ -17,6 +17,7 @@ function ItemCard({handleDelete, itemsArray, handleItemUpdate, item, id, name, d
       <img src={image} alt={name} className="cardImages" />
       <p>{category}</p>
       <p>{organization}</p>
+      <p> Donated by: {user} </p>
       <button onClick={() => handleDelete(id)}>Delete</button> 
       {/* <div className= "signupButton"> */}
       <button onClick={toggleSignup}>Update</button> 
