@@ -24,10 +24,13 @@ function Login({setUser, setIsAuthenticated}) {
       body: JSON.stringify({ user }),
     })        
     .then(res =>  res.json())
-    .then((user) => setUser(user))
+    .then((user) => {
+    setUser(user);
+    setIsAuthenticated(true);
+    })
+   
     history.push("/");
     }
-  
 
 function toggleSignup() {
   setShowForm((showForm) => !showForm);
@@ -62,13 +65,10 @@ function toggleSignup() {
       <input className="submit" type="submit" value="Login!" />
       </form>
       {error?<div>{error}</div>:null}
-        </div> 
-    {/* <div className= "signupButton">
-      <button onClick={toggleSignup}>Sign Up</button>
+      <p>New user?</p>
+      <button className="submit" onClick={toggleSignup}>Sign Up</button>
       {showForm ? <Signup/> : null}
-    </div> */}
-
-  
+        </div> 
     </>
   );
     }

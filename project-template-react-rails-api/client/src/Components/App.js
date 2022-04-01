@@ -67,19 +67,18 @@ function App() {
     });
   }
 
-
   function onFormSubmit(newItem) {
     setItemsArray([newItem, ...itemsArray])
   }
-  // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
+
+  if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
 
   return (
     <div >
-      <Header />
+      <Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>
 
       <Switch>
         <Route path="/items">
-  
           {/* <ItemContainer handleDelete={handleDelete}  itemsArray={itemsArray} orgArray={orgArray} /> */}
           <ItemContainer handleDelete={handleDelete} handleItemUpdate={handleItemUpdate} itemsArray={itemsArray} orgArray={orgArray} />
         </Route>

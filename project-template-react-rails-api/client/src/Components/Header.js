@@ -1,7 +1,19 @@
 import React from 'react'
 import { NavLink, Route } from "react-router-dom"
 
-function Header() {
+
+
+function Header({isAuthenticated, setIsAuthenticated}) {
+
+  function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => onLogout());
+  }
+
+  function onLogout(){
+  setIsAuthenticated (isAuthenticated => !isAuthenticated)
+  }
   return (
     <div >
         <img className='headerPic' src = "https://thumbs.dreamstime.com/b/donation-charity-logo-label-hand-holding-heart-icon-vector-symbol-isolated-white-background-97894491.jpg"></img>
@@ -14,6 +26,8 @@ function Header() {
         <NavLink className="links" exact to='/items'> Items </NavLink>
         <NavLink className="links" exact to="/">Main</NavLink>
         </Route>
+        <button onClick={handleLogout}>Logout</button>
+
         </div>
         
 

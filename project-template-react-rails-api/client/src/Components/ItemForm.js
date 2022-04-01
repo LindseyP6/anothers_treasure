@@ -5,7 +5,8 @@ function ItemForm({items, onFormSubmit}) {
     const [description, setDescription] = useState("")
     const [image, setImage] = useState("")
     const [category, setCategory] = useState("")
-    const [organization, setOrganization] = useState("")
+    const [organization, setOrganization] = useState(null)
+    const [user, setUser] = useState(null)
 
     function handleSubmit(e) {
         const newItem = {
@@ -13,7 +14,9 @@ function ItemForm({items, onFormSubmit}) {
             description,
             image,
             category,
-            organization_id: organization.id
+            user, 
+            organization,
+            organization_id: organization.id,
         }
         e.preventDefault();
         fetch("/items", {
@@ -24,7 +27,8 @@ function ItemForm({items, onFormSubmit}) {
           body: JSON.stringify(newItem),
         })
           .then((response) => response.json())
-          .then((data) => onFormSubmit(data));
+          .then(item => console.log(item))
+          // .then((data) => onFormSubmit(data));
       }
 
   return (

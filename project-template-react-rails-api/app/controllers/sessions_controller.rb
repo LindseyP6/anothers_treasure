@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorized_user, only: [:login]
+    skip_before_action :authorized_user, only: [:login, :logout]
 
     def login
 
@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         
         if user && user.authenticate(params[:user][:password])
             
-            session[:user_id] = user.id
+            session[:current_user] = user.id
             render json: user, status: :ok 
         else 
             render json: {error: "Invalid password or username"}, status: :unauthorized
@@ -16,5 +16,6 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete :current_user
+        head :no_content
     end
 end

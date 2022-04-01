@@ -42,9 +42,9 @@ const {id} = useParams()
     <p>{org.name}</p>
     <p>{org.address}</p>
     <p>{org.telephone}</p>
-    <p> In need of: {org.needs} </p>
+    {/* <p> In need of: {org.needs} </p> */}
     {/* <p>{org.items}</p> */}
-    <ItemCard1 key={items.id} items={orgItems}/>
+    {/* <ItemCard1 key={items.id} items={orgItems}/> */}
     </div>
     </>
   )
