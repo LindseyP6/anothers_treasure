@@ -8,7 +8,7 @@ function ItemForm({items, orgArray, onFormSubmit}) {
     const [organization, setOrganization] = useState(null)
     const [user, setUser] = useState(null)
 
-    organization_id = orgArray
+    // organization_id = orgArray
     function handleSubmit(e) {
         const newItem = {
             name,
@@ -17,9 +17,9 @@ function ItemForm({items, orgArray, onFormSubmit}) {
             category,
             user, 
             organization,
-            organization_id: organization.id,
-            user_id: user.id, 
-            spot_id: spot_id
+            // organization_id: organization.id,
+            // user_id: user.id, 
+            // spot_id: spot_id
         }
         e.preventDefault();
         fetch("/items", {
