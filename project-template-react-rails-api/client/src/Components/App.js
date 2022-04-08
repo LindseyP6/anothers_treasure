@@ -24,18 +24,18 @@ function App() {
       .then(setItemsArray)
   }, [])
 
-  useEffect(() => {
-    fetch("/authorized_user")
-      .then((res) => {
-        if (res.ok) {
-          res.json()
-            .then((user) => {
-              setIsAuthenticated(true);
-              setUser(user);
-            })
-        }
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/authorized_user")
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         res.json()
+  //           .then((user) => {
+  //             setIsAuthenticated(true);
+  //             setUser(user);
+  //           })
+  //       }
+  //     });
+  // }, []);
 
   useEffect(() => {
     fetch('/organizations')
@@ -44,9 +44,10 @@ function App() {
   }, [])
 
 
+
   function handleItemUpdate(changedItem) {
     const changedItems = itemsArray.map(originalItem => {
-      if (originalItem.id === changedItem.id) {
+      if (originalItem === changedItem ){
         return changedItem;
       } else {
         return originalItem;
@@ -97,7 +98,7 @@ function App() {
 
         <Route exact path="/organizations/:id">
           <OrgCard items={itemsArray} orgArray={orgArray} />
-          <ItemForm items={itemsArray} onFormSubmit={onFormSubmit} />
+          <ItemForm items={itemsArray} orgArray={orgArray} onFormSubmit={onFormSubmit} />
         </Route>
 
         <Route path='/organizations'>

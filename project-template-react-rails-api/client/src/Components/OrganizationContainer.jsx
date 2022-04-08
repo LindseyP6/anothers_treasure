@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import OrganizationPage from './OrganizationPage'
 
 function OrganizationContainer({ orgArray }) {
-
+console.log(orgArray)
   const [card, setCard] = useState([])
 
   // const {id} = useParams()

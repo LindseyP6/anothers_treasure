@@ -2,48 +2,60 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 
-function ItemEditForm({ handleItemUpdate, itemsArray, orgArray, itemId, name, description, image, category, organization  }) {
+function ItemEditForm({ handleItemUpdate, itemsArray, id, orgArray, itemId, name, description, image, category, organization  }) {
  
   const [formState, setFormState] = useState({})
-  const { id } = useParams();
+  // const { id } = useParams();
   const history = useHistory();
+  const [updatedName, setUpdatedName] = useState(name)
+  const [updatedDescription, setUpdatedDescription] = useState(description)
+  const [updatedImage, setUpdatedImage] = useState(image)
 
 
   useEffect(() => {
-    fetch(`items/${id}`)
+    fetch(`/items/${id}`)
       .then(res => res.json())
       .then(data => {
         setFormState(data);
       })
   }, [id])
 
-//   function handleChange(event) {
-//     const { name, value } = event.target;
-//     setFormState({...formState, [name]: value})
-//   }
-  function handleChange(event){
-      setFormState({
-    ...formState, [event.target.name]: event.target.value,
-  });
-}
+  function handleChange(event) {
+    event.preventDefault();
+    const { name, value } = event.target;
+    setFormState({...formState, [name]: value})
+  }
+//   function handleChange(event){
+//       setFormState({
+//     ...formState, [event.target.name]: event.target.value,
+//   });
+// }
 
   function handleSubmit(event) {
     event.preventDefault();
+    const editedItem = {
+      name: updatedName,
+      description: updatedDescription, 
+      image: updatedImage
+    }
+
+    
+
     fetch(`/items/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formState)
+      body: JSON.stringify(editedItem)
     })
       .then(res => res.json())
       .then(updatedItem => {
         handleItemUpdate(updatedItem)
-        history.push(`/items/${id}`)
+        history.push(`/items`)
       })
     }
 
-//   const { name, description, image, category, organization } = formState;
+  // const { name, description, image, category, organization } = formState;
 
   return (
     <div className="itemForm">
@@ -54,10 +66,10 @@ function ItemEditForm({ handleItemUpdate, itemsArray, orgArray, itemId, name, de
           Item Name
           <br></br>
           <input
-            type="name"
+            type="text"
             name="name"
-            value={name}
-            onChange={handleChange}
+            defaultValue={name}
+            onChange={(e) => setUpdatedName(e.target.value)}
           />
         </label>
         <br></br>
@@ -65,10 +77,10 @@ function ItemEditForm({ handleItemUpdate, itemsArray, orgArray, itemId, name, de
           Item Description
           <br></br>
           <input
-            type="name"
+            type="text"
             name="name"
-            value={description}
-            onChange={handleChange}
+            defaultValue={description}
+            onChange={(e) => setUpdatedDescription(e.target.value)}
           />
         </label>
         <br></br>
@@ -76,10 +88,10 @@ function ItemEditForm({ handleItemUpdate, itemsArray, orgArray, itemId, name, de
           Item Image
           <br></br>
           <input
-            type="name"
+            type="text"
             name="name"
-            value={image}
-            onChange={handleChange}
+            defaultValue={image}
+            onChange={(e) => setUpdatedImage(e.target.value)}
           />
         </label>
         <br></br>

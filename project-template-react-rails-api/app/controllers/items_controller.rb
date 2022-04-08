@@ -1,11 +1,15 @@
 class ItemsController < ApplicationController
-    skip_before_action :authorized_user, only: [:index, :destroy]
+    skip_before_action :authorized_user, only: [:index, :create, :destroy, :show, :update]
 
     def index
         items = Item.all
         render json: items
     end
     
+    def show 
+        item = Item.find(params[:id])
+        render json: item 
+    end
 
     def create
         item = Item.create!(item_params)
@@ -14,10 +18,9 @@ class ItemsController < ApplicationController
     end
 
     def update 
-        item = Item.find(parmas[:id])
+        item = Item.find(params[:id])
         item.update!(item_params)
-
-        render json: item, status: :accepted
+        render json: item, status: :ok
     end
 
     def destroy 
@@ -30,7 +33,7 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-        params.permit(:name, :description, :image, :category, :organization_id, :org_name)
+        params.permit(:name, :description, :image, :category, :id)
     end
 end
     

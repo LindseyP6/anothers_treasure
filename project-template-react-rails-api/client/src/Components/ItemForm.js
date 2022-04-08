@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function ItemForm({items, onFormSubmit}) {
+function ItemForm({items, orgArray, onFormSubmit}) {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [image, setImage] = useState("")
@@ -8,6 +8,7 @@ function ItemForm({items, onFormSubmit}) {
     const [organization, setOrganization] = useState(null)
     const [user, setUser] = useState(null)
 
+    organization_id = orgArray
     function handleSubmit(e) {
         const newItem = {
             name,
@@ -17,6 +18,8 @@ function ItemForm({items, onFormSubmit}) {
             user, 
             organization,
             organization_id: organization.id,
+            user_id: user.id, 
+            spot_id: spot_id
         }
         e.preventDefault();
         fetch("/items", {
